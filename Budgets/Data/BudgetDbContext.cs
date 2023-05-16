@@ -5,7 +5,7 @@ namespace Budgets.Data
 {
     public class BudgetDbContext : DbContext
     {
-        public DbSet<PersonalAccount>? PersonalAccounts { get; set; }
+        public DbSet<Account>? Accounts { get; set; }
         public DbSet<BudgetItem>? BudgetItems { get; set; }
         public BudgetDbContext(DbContextOptions<BudgetDbContext> options) : base(options) { }
         //protected override void OnModelCreating(ModelBuilder modelBuilder)

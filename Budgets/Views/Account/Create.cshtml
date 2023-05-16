@@ -1,5 +1,42 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Budgets.View_Model
+@model CreateAccountViewModel
+
+<h1>Add New Employer</h1>
+
+<form asp-controller="Account" asp-action="Create" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name">Account Name</label>
+        <input asp-for = "Name"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label asp-for="TotalMoney">Total Balance</label>
+        <input asp-for="TotalMoney"/>
+        <span asp-validation-for="TotalMoney"></span>
+    </div>
+
+    <br />
+       <div class="form-group">
+        <label asp-for="BudgetPerMonth">Monthly Budget</label>
+        <input asp-for="BudgetPerMonth"/>
+        <span asp-validation-for="TotalMoney"></span>
+    </div>
+
+    <br />
+      <div class="form-group">
+        <label asp-for="MonthlyIncome">Monthly Income</label>
+        <input asp-for="MonthlyIncome"/>
+        <span asp-validation-for="MonthlyIncome"></span>
+    </div>
+
+    <br />
+
+
+
+    <input type="submit" value="Add Account" />
+
+</form>
