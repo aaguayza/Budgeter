@@ -3,4 +3,5 @@
 <h1>Accounts</h1>
 @foreach(Account account in Model){
     <h2>@account.Name</h2>
+    <a asp-controller="Account" asp-action="Edit" asp-route-id="@account.Id">Edit Profile</a>
 }

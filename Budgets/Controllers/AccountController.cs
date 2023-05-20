@@ -45,5 +45,10 @@ namespace Budgets.Controllers
             }
             return View("Create", createAccountViewModel);
         }
+        [HttpGet]
+        public IActionResult Edit(int id) {
+            Account? selectedProfile = context.Accounts.Find(id);
+            return View(selectedProfile);
+        }
     }
 }
