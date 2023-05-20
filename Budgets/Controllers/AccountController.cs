@@ -16,8 +16,9 @@ namespace Budgets.Controllers
         //Need an interface that displays the user's budgget items, all the money thats been used, money saved, and money for motnth
         public IActionResult Index()
         {
-            List<Account> accounts = context.Accounts.Include(j => j.BudgetItems).ToList();
-            return View();
+            //List<Account> accounts = context.Accounts.Include(j => j.BudgetItems).ToList();
+            List<Account> accounts = context.Accounts.ToList();
+            return View(accounts);
         }
         public IActionResult Create()
         {
@@ -26,9 +27,23 @@ namespace Budgets.Controllers
         }
         //User will need to create an account with all the money in there.  View Model will be required
         [HttpPost]
-        public IActionResult Create(string placeholder)
+        public IActionResult Create(CreateAccountViewModel createAccountViewModel)
         {
-            return View();
+            List<Account> accounts = context.Accounts.ToList();
+            if (ModelState.IsValid)
+            {
+                Account newAccount = new Account
+                {
+                    Name = createAccountViewModel.Name,
+                    MonthlyIncome = createAccountViewModel.MonthlyIncome,
+                    TotalMoney = createAccountViewModel.TotalMoney,
+                    BudgetPerMonth = createAccountViewModel.BudgetPerMonth,
+                };
+                context.Accounts.Add(newAccount);
+                context.SaveChanges();
+                return View("Index", accounts);
+            }
+            return View("Create", createAccountViewModel);
         }
     }
 }
