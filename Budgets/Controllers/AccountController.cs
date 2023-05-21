@@ -48,7 +48,28 @@ namespace Budgets.Controllers
         [HttpGet]
         public IActionResult Edit(int id) {
             Account? selectedProfile = context.Accounts.Find(id);
-            return View(selectedProfile);
+            CreateAccountViewModel createAccountViewModel = new CreateAccountViewModel();
+            createAccountViewModel.Account = selectedProfile;
+            return View(createAccountViewModel);
+        }
+        [HttpPost]
+        public IActionResult Edit(CreateAccountViewModel createAccountViewModel, string id)
+        {
+            Account theAccount = context.Accounts.Find(Int32.Parse(id));
+            if (ModelState.IsValid)
+            {
+                theAccount.Name = createAccountViewModel.Name;
+                theAccount.MonthlyIncome = createAccountViewModel.MonthlyIncome;
+                theAccount.TotalMoney = createAccountViewModel.TotalMoney;
+                theAccount.BudgetPerMonth = createAccountViewModel.BudgetPerMonth;
+
+                context.SaveChanges();
+
+                List<Account> accounts = context.Accounts.ToList();
+                return View("Index",accounts);
+            }
+            
+            return View();
         }
     }
 }

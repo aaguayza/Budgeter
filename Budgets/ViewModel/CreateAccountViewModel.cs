@@ -1,4 +1,5 @@
 ﻿
+using Budgets.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace Budgets.View_Model
@@ -13,5 +14,6 @@ namespace Budgets.View_Model
         public int? BudgetPerMonth { get; set; }
         [Required(ErrorMessage = "Please provide monthly income")]
         public int? MonthlyIncome { get; set; }
+        public Account? Account { get; set; }
     }
 }
