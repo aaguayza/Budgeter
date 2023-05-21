@@ -1,4 +1,40 @@
 ﻿@model Budgets.Models.Account
 
 <h1>Edit Account</h1>
-<p>@Model.Name</p>
+<form asp-controller="Account" asp-action="Edit" method="post">
+
+    <div class="form-group">
+        <label asp-for="Name">Account Name</label>
+        <input asp-for = "Name"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <br />
+
+    <div class="form-group">
+        <label asp-for="TotalMoney">Total Balance</label>
+        <input asp-for="TotalMoney"/>
+        <span asp-validation-for="TotalMoney"></span>
+    </div>
+
+    <br />
+       <div class="form-group">
+        <label asp-for="BudgetPerMonth">Monthly Budget</label>
+        <input asp-for="BudgetPerMonth"/>
+        <span asp-validation-for="TotalMoney"></span>
+    </div>
+
+    <br />
+      <div class="form-group">
+        <label asp-for="MonthlyIncome">Monthly Income</label>
+        <input asp-for="MonthlyIncome"/>
+        <span asp-validation-for="MonthlyIncome"></span>
+    </div>
+
+    <br />
+
+
+
+    <input type="submit" value="Update Account" />
+
+</form>
